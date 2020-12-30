@@ -1,11 +1,19 @@
 class View {
-  constructor(game, $el) {}
-
+  constructor(game, $el) {
+    this.game = game;
+    this.$board = $el;
+  }
   bindEvents() {}
 
   makeMove($square) {}
 
-  setupBoard() {}
+  setupBoard() {
+    let $ul = $('<ul>');
+    for (let i = 0; i < 9; i++) {
+      $ul.append($('<li></li>'))
+    }
+    this.$board.append($)
+  }
 }
 
 module.exports = View;
