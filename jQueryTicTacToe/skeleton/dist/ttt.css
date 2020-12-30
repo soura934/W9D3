@@ -22,3 +22,11 @@ li{
 li.unclicked:hover {
     background-color: yellow;
 }
+
+.player{
+    font-size: 100px;
+    text-align: center;
+    height: 180px;
+    margin: auto;
+    margin-top: 20px;
+}

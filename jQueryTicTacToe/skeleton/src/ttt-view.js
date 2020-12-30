@@ -4,6 +4,7 @@ class View {
     this.$board = $el;
     this.setupBoard();
     this.bindEvents();
+
   }
   bindEvents() {
     $('ul').on('click', 'li', (event) => {
@@ -20,8 +21,14 @@ class View {
       let i = $('li').index($square[0]);
       let player = this.game.currentPlayer;
       this.game.playMove([i % 3, Math.floor(i / 3)]);
-      $square.append(player);
+      let $h1 = $('<h1 class="player"></h1>').text(player);
+      $square.append($h1);
       $square.addClass('click');
+      
+      if(this.game.isOver()){
+        let $h2 = $('<h2></h2>').text(`You win, ${this.game.winner()}`);
+        $("body").append($h2);
+      }
     }
   }
 
