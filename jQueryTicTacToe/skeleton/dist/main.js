@@ -45,7 +45,7 @@ eval("\nconst MoveError = function (msg) { this.msg = msg; };\n\n// MoveError re
   \*************************/
 /***/ ((module) => {
 
-eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$board = $el;\n    this.setupBoard();\n  }\n  bindEvents() {}\n\n  makeMove($square) {}\n\n  setupBoard() {\n    let $ul = $('<ul>');\n    for (let i = 0; i < 9; i++) {\n      $ul.append($('<li></li>'))\n    }\n    this.$board.append($ul)\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
+eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.$board = $el;\n    this.setupBoard();\n  }\n  bindEvents() {\n    $('ul').on('click', 'li', (event) => {\n      this.makeMove($(event.currentTarget));\n    })\n  }\n\n  makeMove($square) {\n    if ($square.hasClass('click')) {\n      alert(\"invalid move try again\")\n    } else {\n      let i = $('li').index($square[0]);\n      let player = this.game.currentPlayer;\n      this.game.playMove([i % 3, i / 3]);\n      $square.append(player);\n      $square.addClass('click');\n    }\n  }\n\n  setupBoard() {\n    let $ul = $('<ul>');\n    for (let i = 0; i < 9; i++) {\n      $ul.append($('<li class=\"unclicked\"></li>'))\n    }\n    this.$board.append($ul)\n  }\n}\n\nmodule.exports = View;\n\n\n//# sourceURL=webpack:///./src/ttt-view.js?");
 
 /***/ })
 
@@ -79,7 +79,7 @@ eval("class View {\n  constructor(game, $el) {\n    this.game = game;\n    this.
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ./solution/game */ \"./src/solution/game.js\");\n\n  $(() => {\n    const game = new Game();\n    const view = new View(game, $('.ttt'));\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const View = __webpack_require__(/*! ./ttt-view */ \"./src/ttt-view.js\");\nconst Game = __webpack_require__(/*! ./solution/game */ \"./src/solution/game.js\");\n\n  $(() => {\n    const game = new Game();\n    const view = new View(game, $(\".ttt\"));\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
 })();
 
 /******/ })()

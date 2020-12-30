@@ -3,5 +3,5 @@ const Game = require('./solution/game');
 
   $(() => {
     const game = new Game();
-    const view = new View(game, $('.ttt'));
+    const view = new View(game, $(".ttt"));
   });
