@@ -19,6 +19,6 @@ li{
     background-color: grey;
 }
 
-li.click:hover {
+li.unclicked:hover {
     background-color: yellow;
 }
